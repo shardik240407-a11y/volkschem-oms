@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VOLKSCHEM OMS — Design System
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Brand Palette ──────────────────────────────────────────────────────── */
+  --color-primary: #1B5E20;
+  --color-primary-light: #2E7D32;
+  --color-primary-lighter: #4CAF50;
+  --color-primary-50: #E8F5E9;
+  --color-primary-100: #C8E6C9;
+  --color-secondary: #2E7D32;
+  --color-accent: #4CAF50;
+  --color-action: #F57C00;
+  --color-action-hover: #E65100;
+  --color-action-light: #FFF3E0;
+
+  /* ── Neutral Palette ────────────────────────────────────────────────────── */
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F5F5;
+  --color-surface-dark: #FAFAFA;
+  --color-border: #E0E0E0;
+  --color-border-dark: #BDBDBD;
+
+  /* ── Text ────────────────────────────────────────────────────────────────── */
+  --color-text-primary: #212121;
+  --color-text-secondary: #757575;
+  --color-text-muted: #9E9E9E;
+  --color-text-inverse: #FFFFFF;
+
+  /* ── Semantic ────────────────────────────────────────────────────────────── */
+  --color-error: #D32F2F;
+  --color-error-light: #FFEBEE;
+  --color-success: #388E3C;
+  --color-success-light: #E8F5E9;
+  --color-warning: #F57C00;
+  --color-warning-light: #FFF3E0;
+  --color-info: #1976D2;
+  --color-info-light: #E3F2FD;
+
+  /* ── Status Colors ──────────────────────────────────────────────────────── */
+  --color-status-draft: #9E9E9E;
+  --color-status-draft-bg: #F5F5F5;
+  --color-status-pending: #F57C00;
+  --color-status-pending-bg: #FFF3E0;
+  --color-status-approved: #388E3C;
+  --color-status-approved-bg: #E8F5E9;
+  --color-status-rejected: #D32F2F;
+  --color-status-rejected-bg: #FFEBEE;
+  --color-status-confirmed: #1976D2;
+  --color-status-confirmed-bg: #E3F2FD;
+  --color-status-in-production: #5C6BC0;
+  --color-status-in-production-bg: #E8EAF6;
+  --color-status-ready: #00897B;
+  --color-status-ready-bg: #E0F2F1;
+  --color-status-dispatched: #1B5E20;
+  --color-status-dispatched-bg: #E8F5E9;
+
+  /* ── Shadows ─────────────────────────────────────────────────────────────── */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.2);
+  --shadow-navbar: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* ── Border Radius ──────────────────────────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ── Font Family ─────────────────────────────────────────────────────────── */
+  --font-sans: 'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+
+/* ── Global Resets ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-alt);
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Scrollbar Styling ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* ── Focus Visible Ring ────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary-lighter);
+  outline-offset: 2px;
+}
+
+/* ── Skeleton Loading Animation ────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ── Fade In Animation ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* ── Slide In Animation ────────────────────────────────────────────────────── */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.25s ease-out forwards;
+}
