@@ -38,7 +38,7 @@ function generateProductTable(doc, quotationData, startY, isFactoryView = false)
     // Dynamic Components
     const dynamicComponents = new Set();
     quotationData.rows.forEach(row => {
-      (row.components || [].forEach(comp => {
+      (row.components || []).forEach(comp => {
         if (comp.is_checked && !comp.isBulkMaterial && !comp.component_name.toLowerCase().includes('bulk material')) {
           dynamicComponents.add(comp.component_name);
         }
